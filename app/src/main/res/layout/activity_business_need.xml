@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.BusinessNeed">
+    <com.example.administrator.industrialmessagesbridge.myView.SimpleToolbar
+        android:id="@+id/simple_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/barcolor"
+        android:fitsSystemWindows="true"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+    <ImageView
+        android:background="@drawable/arrow_right"
+        android:id="@+id/message_bar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="10dp"
+        android:visibility="visible"/>
+    <TextView
+        android:layout_marginRight="20dp"
+
+        android:textColor="@color/baise"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/mTxtMiddleTitle"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        ></TextView>
+    </com.example.administrator.industrialmessagesbridge.myView.SimpleToolbar>
+    <LinearLayout
+        android:background="@color/barcolor"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <net.lucode.hackware.magicindicator.MagicIndicator
+                android:id="@+id/magic_indicator"
+                android:layout_width="match_parent"
+
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+        <ImageButton
+            android:background="@color/barcolor"
+            android:layout_gravity="center"
+            android:id="@+id/select_lable_menu"
+            android:scaleType="centerInside"
+            android:src="@drawable/arrow_down"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<Spinner
+    android:id="@+id/sort_sp"
+    android:entries="@array/show_need_sp_array"
+    android:spinnerMode="dropdown"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"></Spinner>
+        <LinearLayout
+            android:layout_weight="4"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"></LinearLayout>
+    </LinearLayout>
+  <android.support.v4.view.ViewPager
+      android:id="@+id/show_business_need_vp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+</LinearLayout>

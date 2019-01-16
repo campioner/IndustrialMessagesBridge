@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TopicContentDetailActivity">
+    <android.support.design.widget.AppBarLayout
+            android:background="@color/baise"
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <ImageButton
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:id="@+id/back"
+        android:scaleType="centerInside"
+        android:background="#00000000"
+        android:src="@drawable/arrow_right"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+    <View
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:background="@color/huise"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"></View>
+    <LinearLayout
+        android:id="@+id/topic_show_headll"
+        android:gravity="center_vertical"
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<ImageView
+    android:layout_gravity="center"
+    app:layout_scrollFlags="scroll|enterAlways"
+    android:id="@+id/topic_content_iv"
+    android:background="@drawable/basa"
+    android:layout_width="60dp"
+    android:layout_height="50dp" />
+        <TextView
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:id="@+id/topic_content_name"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="二级标签名"
+            android:textColor="@color/blackaa"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:background="@color/huise"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"></View>
+    <net.lucode.hackware.magicindicator.MagicIndicator
+        android:id="@+id/topic_content_mi"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+            <View
+            app:layout_scrollFlags="scroll|enterAlways"
+                android:background="@color/huise"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"></View>
+        <LinearLayout
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/topic_show_sort_method"
+                android:textColor="@color/blackaa"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:text="发帖时间排序"
+                android:layout_marginLeft="10dp"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"></LinearLayout>
+            <TextView
+                android:layout_gravity="right"
+                android:id="@+id/topic_show_bn1"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:text="排序"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_gravity="center_vertical"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/click"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+        </LinearLayout>
+        </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/topic_content_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</android.support.design.widget.CoordinatorLayout>

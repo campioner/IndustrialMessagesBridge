@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+ <android.support.v7.widget.CardView
+     android:id="@+id/document_cv"
+     android:clickable="true"
+     android:foreground="@drawable/card_foreground"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+<LinearLayout
+    android:padding="10dp"
+    android:id="@+id/document_ll"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+      android:id="@+id/document_photo"
+    android:background="@drawable/document_check"
+    android:layout_width="55dp"
+    android:layout_height="55dp" />
+    <LinearLayout
+    android:orientation="vertical"
+    android:layout_weight="1"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/document_describe"
+    android:layout_weight="1"
+    android:textSize="18sp"
+    android:text="111"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+     <TextView
+         android:id="@+id/send_document_time"
+    android:layout_gravity="bottom"
+    android:textSize="15sp"
+    android:text="111"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    </LinearLayout>
+    <TextView
+        android:layout_gravity="center"
+    android:textColor="#F9EF792A"
+    android:id="@+id/document_price"
+    android:layout_marginRight="20dp"
+    android:text="￥11"
+    android:textSize="15sp"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp"/>
+</LinearLayout>
+
+ </android.support.v7.widget.CardView>
+    <View
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/home_divice"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+</LinearLayout>

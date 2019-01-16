@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.becomeMasterFragment.BecomeMasterTwoFragment">
+
+ <LinearLayout
+     android:layout_marginTop="10dp"
+     android:background="@color/baise"
+     android:orientation="horizontal"
+     android:paddingLeft="15dp"
+     android:paddingRight="15dp"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+     <ImageButton
+         android:scaleType="centerInside"
+         android:src="@drawable/add_direction"
+         android:background="#00000000"
+         android:layout_width="30dp"
+         android:layout_height="30dp" />
+     <TextView
+         android:layout_marginLeft="20dp"
+         android:layout_gravity="center"
+         android:textColor="@color/wordblue"
+         android:text="添加从事方向"
+         android:textSize="20sp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" />
+ </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+    <Button
+        android:id="@+id/nextBn2"
+        android:text="下一步"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:background="#FF285BE8"
+        android:layout_width="250dp"
+        android:layout_height="50dp" />
+</LinearLayout>

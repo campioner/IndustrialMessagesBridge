@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/topic_list_ll"
+    android:orientation="vertical"
+    android:background="@color/baise"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.example.administrator.industrialmessagesbridge.myView.RoundImageView
+            android:src="@drawable/warning_circle"
+            android:id="@+id/topic_list_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/send_topic_name"
+                android:textColor="@color/blackaa"
+                android:text="发帖人的名字"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/topic_list_time"
+                android:text="12.1011"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="bottom"
+                    android:text="来自"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/two_lable"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="bottom"
+                    android:text="二级标签"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/topic_list_content"
+            android:textSize="15sp"
+            android:text="这里是帖子内容"
+            android:textColor="@color/blackaa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <com.jaeger.ninegridimageview.NineGridImageView
+
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/nine_grid"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        app:imgGap="4dp"
+        app:showStyle="fill"
+        app:singleImgSize="120dp"/>
+    <View
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+       android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></LinearLayout>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/zhuanfa" />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="转发"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"></LinearLayout>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/pinglun" />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="评论"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"></LinearLayout>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/dont_give_good" />
+        <TextView
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="点赞"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:background="@color/home_divice"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"></View>
+</LinearLayout>

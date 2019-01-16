@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  android:background="@color/baise"
+    tools:context=".activity.SendNeedActivity">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.example.administrator.industrialmessagesbridge.myView.SimpleToolbar
+        android:id="@+id/simple_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/baise"
+        android:fitsSystemWindows="true"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+        <ImageView
+            android:background="@drawable/arrow_right"
+            android:id="@+id/message_bar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:visibility="visible"/>
+        <TextView
+            android:text="发布需求"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/blackaa"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/mTxtMiddleTitle"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            ></TextView>
+    </com.example.administrator.industrialmessagesbridge.myView.SimpleToolbar>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:maxLength="15"
+            android:id="@+id/input_title"
+            android:hint="输入标题"
+            android:background="@drawable/edittext_ll"
+            android:layout_width="match_parent"
+            android:layout_height="45dp" />
+    </LinearLayout>
+    <View
+        android:background="@color/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"></View>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/select_lable_ll"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:baselineAligned="false"
+                android:text=" "
+                android:textColor="@color/red" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="需求分类"
+                android:textColor="@color/blackaa"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/select_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="选择分类"
+
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:background="#00000000"
+                android:scaleType="centerInside"
+                android:src="@drawable/arrow_left" />
+        </LinearLayout>
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="13dp"
+            android:background="@color/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/get_price_ll"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"
+                android:text="*"
+                android:textColor="@color/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="18sp"
+                android:textColor="@color/blackaa"
+                android:text="悬赏金额"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/get_price_result"
+                android:layout_marginRight="30dp"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:hint="请输入"
+                android:background="@color/baise"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+        </LinearLayout>
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="13dp"
+            android:background="@color/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/select_start_business_time"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"
+                android:text=" "
+                android:textColor="@color/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="18sp"
+                android:textColor="@color/blackaa"
+                android:text="开标时间"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/select_start_business_time_result"
+                android:layout_marginTop="10dp"
+                android:text="选择时间"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageButton
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                android:src="@drawable/arrow_left"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </LinearLayout>
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="13dp"
+            android:background="@color/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/end_bussiness_time_ll"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"
+                android:text=" "
+                android:textColor="@color/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="18sp"
+                android:textColor="@color/blackaa"
+                android:text="完成时间"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/end_bussiness_time_result"
+                android:layout_marginTop="10dp"
+                android:text="选择时间"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageButton
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                android:src="@drawable/arrow_left"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </LinearLayout>
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="13dp"
+            android:background="@color/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/need_person_ll"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"
+                android:text=" "
+                android:textColor="@color/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="18sp"
+                android:textColor="@color/blackaa"
+                android:text="需求人数"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/need_person_result"
+                android:layout_marginRight="30dp"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:hint="请输入"
+                android:background="@color/baise"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+        </LinearLayout>
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="13dp"
+            android:background="@color/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/end_need_time_ll"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:text="*"
+                android:textColor="@color/red" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="发布截止时间"
+                android:textColor="@color/blackaa"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/end_need_time_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="选择时间"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="12dp"
+                android:background="#00000000"
+                android:scaleType="centerInside"
+                android:src="@drawable/arrow_left" />
+        </LinearLayout>
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="13dp"
+            android:background="@color/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+    </LinearLayout>
+    <View
+        android:background="@color/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"></View>
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="*"
+                android:textColor="@color/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/blackaa"
+            android:textSize="15sp"
+            android:text="需求描述"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+    <com.example.administrator.industrialmessagesbridge.myView.MyTextView
+        android:id="@+id/need_content_reuslt"
+        android:layout_marginTop="10dp"
+        android:gravity="top"
+        android:hint="最多500行"
+       android:maxLines="500"
+        android:background="@drawable/edittext_ll"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+</LinearLayout>
+<Button
+    android:id="@+id/submit_bn"
+    android:text="提交"
+    android:background="@color/bnlan"
+    android:layout_gravity="center"
+    android:layout_width="180dp"
+    android:layout_height="50dp" />
+</LinearLayout>
+</ScrollView>

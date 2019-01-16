@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:id="@+id/oneLable_ll"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="50dp">
+    <com.example.administrator.industrialmessagesbridge.myView.RoundImageView
+        android:id="@+id/oneLable_iv"
+        android:src="@drawable/master"
+        android:layout_width="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_height="30dp" />
+    <TextView
+        android:id="@+id/oneLable_tv"
+        android:layout_marginLeft="15dp"
+        android:layout_weight="1"
+        android:textColor="#FF000000"
+        android:textSize="20sp"
+        android:text="全部课程"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:clickable="false"
+        android:id="@+id/oneLable_ib"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#00000000"
+        android:scaleType="centerInside"
+        android:src="@drawable/dont_click" />
+</LinearLayout>
+    <View
+        android:background="#FFDED7D7"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/twoLable_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">IndustrialMessagesBridge</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="show_need_sp_array">
+        <item>发布时间排序</item>
+        <item>热度排序</item>
+    </string-array>
+</resources>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gc.materialdesign.views.ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.becomeMasterFragment.BecomeMasterOneFragment">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:orientation="vertical"
+
+        android:background="@color/baise"
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+        <TextView
+            android:layout_gravity="left"
+
+            android:text="设置照片用于个人信息核对，请用真实照片"
+            android:textColor="@color/blackaa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/select_photo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/add_photo" />
+    </RelativeLayout>
+    <View
+        android:background="@color/qianhuise"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"></View>
+<LinearLayout
+    android:background="@color/baise"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <TextView
+        android:textSize="15sp"
+        android:text="姓名        "
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_marginLeft="20dp"
+        android:hint="输入姓名"
+        android:background="@color/baise"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/qianhuise"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:background="@color/baise"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:textSize="15sp"
+            android:text="工作年限"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/input_work_time"
+            android:inputType="number"
+            android:layout_marginLeft="20dp"
+            android:hint="输入工作年限"
+            android:background="@color/baise"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/qianhuise"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:background="@color/baise"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:textSize="15sp"
+            android:text="所在公司"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/input_componey"
+            android:layout_marginLeft="20dp"
+            android:hint="输入所在公司"
+            android:background="@color/baise"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/qianhuise"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:background="@color/baise"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:textSize="15sp"
+            android:text="职位        "
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/input_work_position"
+            android:layout_marginLeft="20dp"
+            android:hint="输入职位"
+            android:background="@color/baise"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="@color/qianhuise"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"></View>
+    <LinearLayout
+        android:id="@+id/select_address_ll"
+        android:background="@color/baise"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:textSize="15sp"
+            android:text="所在地    "
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/select_address_tv"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:layout_marginLeft="20dp"
+            android:hint="未选"
+            android:background="@color/baise"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_gravity="center"
+            android:background="@drawable/arrow_left"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/qianhuise"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:id="@+id/select_sex_ll"
+        android:background="@color/baise"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:textSize="15sp"
+            android:text="性别        "
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/select_sex_tv"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:layout_marginLeft="20dp"
+            android:hint="未选"
+            android:background="@color/baise"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_gravity="center"
+            android:background="@drawable/arrow_left"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="200dp"
+        android:id="@+id/nextBn1"
+        android:text="下一步"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:background="#FF285BE8"
+        android:layout_width="250dp"
+        android:layout_height="50dp" />
+    </LinearLayout>
+</com.gc.materialdesign.views.ScrollView>

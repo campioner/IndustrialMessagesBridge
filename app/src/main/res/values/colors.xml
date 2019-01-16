@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="baise">#ffffffff</color>
+    <color name="huise">#FFE2DFDF</color>
+    <color name="huiyanse">#FFDED7D7</color>
+    <color name="blackaa">#FF000000</color>
+    <color name="wordblue">#F00D509C</color>
+    <color name="qqlu">#FF06BAFB</color>
+    <color name="qianhuise">#FFE8E3E3</color>
+    <color name="bnlan">#FF285BE8</color>
+    <color name="home_divice">#FFEEEEF3</color>
+    <color name="barcolor">#FF0391FF</color>
+    <color name="edit_text">#FFEFEFF4</color>
+    <color name="texthint">#c3c3c3</color>
+    <color name="yuanxingnei">#FFCEEBFE</color>
+    <color name="person_qianm">#FFFFFDDF</color>
+    <color name="flatebutton">#FF2F91E7</color>
+   <color name="lianjiebackground">#FFF8F8F8</color>
+    <color name="lianjiebn">#FFFDFDFD</color>
+</resources>

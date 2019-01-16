@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="10dp"
+    android:gravity="center"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_width="50dp"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+<de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/function_bn"
+     android:src="@drawable/need"
+    android:background="#00000000"
+    android:layout_width="45dp"
+    android:layout_height="45dp" />
+    <TextView
+
+        android:id="@+id/need_tv"
+        android:gravity="center"
+        android:text="需求需求需求"
+        android:textSize="12sp"
+        android:textColor="@color/blackaa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

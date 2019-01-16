@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/baise"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+   <View
+       android:background="@color/home_divice"
+       android:layout_width="match_parent"
+       android:layout_height="10dp"></View>
+    <LinearLayout
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <View
+            android:layout_marginLeft="15dp"
+            android:background="#FF0E06FB"
+            android:layout_width="3dp"
+            android:layout_height="15dp"></View>
+        <TextView
+            android:id="@+id/recommand_head"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:text="知识文档分享"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"></LinearLayout>
+</LinearLayout>

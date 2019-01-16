@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/baise"
+    android:orientation="vertical"
+    tools:context=".fragment.becomeMasterFragment.BecomeMasterThreeFragment">
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textColor="@color/blackaa"
+        android:text="以下可以选择不填，验证成功后可以自主修改"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_marginTop="5dp"
+        android:background="@color/home_divice"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+    <LinearLayout
+        android:id="@+id/person_introduce"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:textSize="22sp"
+            android:text="个人简介"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow_left"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/person_introduce_tv"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_marginTop="5dp"
+        android:background="@color/home_divice"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+    <LinearLayout
+        android:id="@+id/person_experience"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="工作经历"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow_left" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/person_experience_tv"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></LinearLayout>
+
+    <!-- TODO: Update blank fragment layout -->
+    <Button
+
+        android:id="@+id/nextBn3"
+        android:text="下一步"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:background="#FF285BE8"
+        android:layout_width="250dp"
+        android:layout_height="50dp" />
+
+</LinearLayout>
