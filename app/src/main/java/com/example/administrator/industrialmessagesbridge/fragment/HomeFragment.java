@@ -5,25 +5,35 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Interpolator;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Scroller;
 import android.widget.Toast;
 
 import com.example.administrator.industrialmessagesbridge.MainActivity;
@@ -32,15 +42,19 @@ import com.example.administrator.industrialmessagesbridge.activity.BusinessNeed;
 import com.example.administrator.industrialmessagesbridge.activity.MasterIntroduce;
 import com.example.administrator.industrialmessagesbridge.activity.TaskBigImgActivity;
 import com.example.administrator.industrialmessagesbridge.adapter.HomeFragmentFunctionAdapter;
+import com.example.administrator.industrialmessagesbridge.adapter.HotLabelAdapter;
 import com.example.administrator.industrialmessagesbridge.adapter.RecommadnItemDecroration;
 import com.example.administrator.industrialmessagesbridge.adapter.RecommandAdapter;
 import com.example.administrator.industrialmessagesbridge.adapter.adapterModel.HomeFunction;
 import com.example.administrator.industrialmessagesbridge.model.DocumentModel;
+import com.example.administrator.industrialmessagesbridge.model.LabelTwo;
 import com.example.administrator.industrialmessagesbridge.model.TopicContent;
 import com.example.administrator.industrialmessagesbridge.myView.FullyLinearLayoutManager;
+import com.example.administrator.industrialmessagesbridge.myView.InsideViewPager;
 import com.example.administrator.industrialmessagesbridge.myView.MyImageButton;
 import com.example.administrator.industrialmessagesbridge.myView.MyScrollView;
 import com.example.administrator.industrialmessagesbridge.myView.SimpleToolbar;
+import com.example.administrator.industrialmessagesbridge.myView.StickyScrollView;
 import com.example.administrator.industrialmessagesbridge.utils.DeviceUtil;
 import com.example.administrator.industrialmessagesbridge.utils.GlideImageLoader;
 import com.gc.materialdesign.views.ButtonFloat;
@@ -50,156 +64,168 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 
 
+import net.lucode.hackware.magicindicator.MagicIndicator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView;
+
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
-private com.youth.banner.Banner maser_banner;
+
 private List<Integer>bannerList;
 
 private List<HomeFunction>homeFunctionList;
 private HomeFragmentFunctionAdapter homeFragmentFunctionAdapter;
 private RecyclerView homeFragment_founction;
 private RecommandAdapter recommandAdapter;
-private List<DocumentModel>documentModelList;
-private RecyclerView homeFragment_recommend;
-private SimpleToolbar simple_toolbar;
-private MyImageButton home_send_bn;
-    List<TopicContent> topicContentList;
-    private MyScrollView scroll_view;
-    private int scrollViewY=0;
-    private int h;
 
-    private int beforeX,afterX;
-    private int moveX,moveY;
+private SimpleToolbar simple_toolbar;
+    List<TopicContent> topicContentList;
+    private StickyScrollView home_scroll_view;
+private List<LabelTwo>labelTwoList;
     RelativeLayout move_rl;
-    private boolean isreturn=false;
-    private int direction=2;
-    private boolean fling=false;
+    private RecyclerView hot_label_rv;
+    private HotLabelAdapter hotLabelAdapter;
+    private MagicIndicator magicIndicatorhh;
+    //爱好标签
+  List<HomeVpFragment>fragmentList;
+   private  List<LabelTwo>labelTwoListLike;
+   private InsideViewPager home_vp;
+   private com.example.administrator.industrialmessagesbridge.myView.Banner1 banner_vp;
+   private List<Fragment>bannerFragmentList;
+   private Handler bannerHandler=new Handler();
+   private int page=0;
+   private int time=0;
     public HomeFragment() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home, container, false);
-        homeFragment_recommend=(RecyclerView)view.findViewById(R.id.homeFragment_recommend);
-        maser_banner=(com.youth.banner.Banner)view.findViewById(R.id.maser_banner);
         homeFragment_founction=(RecyclerView)view.findViewById(R.id.homeFragment_founction);
-        home_send_bn=(MyImageButton) view.findViewById(R.id.home_send_bn);
-        scroll_view=(MyScrollView)view.findViewById(R.id.scroll_view);
+        magicIndicatorhh=(MagicIndicator)view.findViewById(R.id.magic_indicatorhh);
+        home_scroll_view=(StickyScrollView)view.findViewById(R.id.home_scroll_view);
+        home_vp=(InsideViewPager)view.findViewById(R.id.home_vp1);
+        banner_vp=(com.example.administrator.industrialmessagesbridge.myView.Banner1)view.findViewById(R.id.banner_vp);
+
         move_rl=(RelativeLayout) view.findViewById(R.id.move_rl);
-        scroll_view.setOnScrollListener(new MyScrollView.OnScrollListener() {
-            @Override
-            public void onScroll(int scrollY) {
-              //  Log.i("msg1",scrollY+"endscrollY");
-              // if (home_send_bn.getY()<DeviceUtil.deviceHeight(getContext())+scrollY)
-                    home_send_bn.setTranslationY(h + scrollY);
-                Log.i("msg1",h + scrollY+"ACTION_UP home_send_bn.getY()");
-              /*  else
-                    home_send_bn.setY(home_send_bn.getY()+DeviceUtil.deviceHeight(getContext())-DeviceUtil.dp2px(getContext(),240)+scrollY);*/
-               if (home_send_bn.getX()<(DeviceUtil.deviceWidth(getContext())/2))
-                      home_send_bn.setX(-(home_send_bn.getWidth()/2-DeviceUtil.dp2px(getContext(),2)));
-               else
-               home_send_bn.setX(afterX);
-                scrollViewY=scrollY;
-               // Log.i("msg1",home_send_bn.getY()+"scroll_view home_send_bn.getY()");
-            }
-        });
-       ;
-        home_send_bn.post(new Runnable() {
-            @Override
-            public void run() {
-                beforeX=(int)home_send_bn.getX();
-                 home_send_bn.setTranslationX(DeviceUtil.dp2px(getContext(),22));
-                home_send_bn.setTranslationY(home_send_bn.getY()+DeviceUtil.deviceHeight(getContext())-DeviceUtil.dp2px(getContext(),240));
-                 afterX=(int)home_send_bn.getX();
-                home_send_bn.setX(beforeX);
-                  h=(int)home_send_bn.getY();
-
-            }
-        });home_send_bn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (direction == 2) {
-                            if (DeviceUtil.deviceWidth(getContext()) - DeviceUtil.dp2px(getContext(), 40) < home_send_bn.getX()) {
-                                home_send_bn.setX(beforeX);
-                            } else
-                                home_send_bn.setX(afterX);
-                        }else{
-                            if (home_send_bn.getX()>0){
-                                home_send_bn.setX(-(home_send_bn.getWidth()/2-DeviceUtil.dp2px(getContext(),2)));
-                            }else{
-                                home_send_bn.setX(0);
-                            }
-                        }
-                    }
-                });
-        scroll_view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                if (isreturn) {
-                    switch (event.getAction()) {
-                        case MotionEvent.ACTION_DOWN:
-
-                            moveX = (int) event.getX();
-                            moveY = (int) event.getY();
-                            break;
-                        case MotionEvent.ACTION_MOVE:
-
-                            home_send_bn.setX( event.getX());
-                            home_send_bn.setY( event.getY()+scrollViewY);
-                          //  Log.i("msg1",home_send_bn.getY()+"ACTION_MOVE home_send_bn.getY()");
-                            break;
-                        case MotionEvent.ACTION_UP:
-                            if (home_send_bn.getX()>=DeviceUtil.deviceWidth(getContext())/2){
-                                home_send_bn.setX(afterX);
-                                direction=2;
-                            }else{
-                                direction=4;
-                                home_send_bn.setX(0);
-                            }
-                           // Log.i("msg1",home_send_bn.getY()+"ACTION_UP home_send_bn.getY()");
-                            fling=true;
-                           h=(int)event.getY();
-                            isreturn=false;
-                            break;
-                    }
-                }
-                return isreturn;
-            }
-        });
-
-        home_send_bn.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                switch (event.getAction()){
-                    case MotionEvent.ACTION_DOWN:
-                        isreturn=true;
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        isreturn=false;
-                        break;
-                }
-                return false;
-            }
-        });
+        hot_label_rv=(RecyclerView)view.findViewById(R.id.hot_label_rv);
         //初始化轮播图
         initbanner();
         //下方功能键
         initFunctionBn();
         //下方推荐
         initRecommand();
+        //初始化热点标签
+        initRecommandHotLabel();
+        //初始化导航
+        initMagicIndicator();
         return view;
+    }
+    public void initMagicIndicator(){
+        CommonNavigator commonNavigator = new CommonNavigator(getContext());
+
+        commonNavigator.setAdapter(new CommonNavigatorAdapter() {
+            @Override
+            public int getCount() {
+                return labelTwoListLike.size();
+            }
+            @Override
+            public IPagerTitleView getTitleView(Context context, final int index) {
+                ColorTransitionPagerTitleView colorTransitionPagerTitleView = new ColorTransitionPagerTitleView(context);
+                colorTransitionPagerTitleView.setNormalColor(Color.GRAY);
+                colorTransitionPagerTitleView.setSelectedColor(Color.BLACK);
+                colorTransitionPagerTitleView.setText(labelTwoListLike.get(index).getLabelName());
+                colorTransitionPagerTitleView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        home_vp.setCurrentItem(index);
+                    }
+                });
+                return colorTransitionPagerTitleView;
+            }
+
+            @Override
+            public IPagerIndicator getIndicator(Context context) {
+                LinePagerIndicator indicator = new LinePagerIndicator(context);
+                indicator.setColors(R.color.barcolor);
+
+                return indicator;
+            }
+
+        });
+
+        home_vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                magicIndicatorhh.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                // Log.e("BaseFragment","onPageScrolled:"+ position);
+            }
+            @Override
+            public void onPageSelected(int position) {
+                magicIndicatorhh.onPageSelected(position);
+                // Log.e("BaseFragment","onPageSelected:"+ position);
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                magicIndicatorhh.onPageScrollStateChanged(state);
+                // Log.e("BaseFragment","onPageScrollStateChanged:"+ state);
+            }
+        });
+        fragmentList=new ArrayList<>();
+        for(int i=0;i<labelTwoListLike.size();i++){
+
+            fragmentList.add(new HomeVpFragment());
+        }
+        magicIndicatorhh.setNavigator(commonNavigator);
+        home_vp.setAdapter(new FragmentAdapter(getChildFragmentManager()));
+        home_vp.setOffscreenPageLimit(2);
+        home_vp.setCurrentItem(0);
+    }
+    public class FragmentAdapter extends  FragmentPagerAdapter{
+        public FragmentAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            return fragmentList.get(i);
+        }
+
+
+        @Override
+        public int getCount() {
+            return fragmentList.size();
+        }
+
+    }
+    public void initRecommandHotLabel(){
+        hotLabelAdapter=new HotLabelAdapter(labelTwoList);
+        hotLabelAdapter.setOnClick(new HotLabelAdapter.OnclickItem() {
+            @Override
+            public void onlick(int position) {
+
+            }
+        });
+        LinearLayoutManager hotLinerlayoutManager=new LinearLayoutManager(getContext());
+        hotLinerlayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        hot_label_rv.setLayoutManager(hotLinerlayoutManager);
+
+        hot_label_rv.setAdapter(hotLabelAdapter);
     }
     public void initRecommand(){
 
@@ -221,26 +247,20 @@ private MyImageButton home_send_bn;
                 startActivity(intent);
             }
         });
-        homeFragment_recommend.setAdapter(recommandAdapter);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext()){
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        };
-        homeFragment_recommend.setLayoutManager(linearLayoutManager);
+
     }
     public void initData() {
-        topicContentList = new ArrayList<>();
-        topicContentList.add(new TopicContent("10.24.53", "messi", "这是一个没有话题的地方", R.drawable.qq, R.drawable.defaulthhhh, 0, 0));
-        topicContentList.add(new TopicContent("10.24.53", "messi", "这是一个没有话题的地方", R.drawable.qq, R.drawable.defaulthhhh,  R.drawable.defaulthhhh, 0));
-        topicContentList.add(new TopicContent("10.24.53", "messi", "这是一个没有话题的地方", R.drawable.qq, R.drawable.defaulthhhh, 0, 0));
-        topicContentList.add(new TopicContent("10.24.53", "messi", "这是一个没有话题的地方", R.drawable.qq, R.drawable.defaulthhhh,  R.drawable.defaulthhhh, 0));
-        topicContentList.add(new TopicContent("10.24.53", "messi", "这是一个没有话题的地方", R.drawable.qq, R.drawable.defaulthhhh,  R.drawable.defaulthhhh,  R.drawable.defaulthhhh));
-        topicContentList.add(new TopicContent("10.24.53", "messi", "这是一个没有话题的地方", R.drawable.qq, R.drawable.defaulthhhh, 0, 0));
-        topicContentList.add(new TopicContent("10.24.53", "messi", "这是一个没有话题的地方", R.drawable.qq, R.drawable.defaulthhhh, 0, 0));
-        topicContentList.add(new TopicContent("10.24.53", "messi", "这是一个没有话题的地方", R.drawable.qq, R.drawable.defaulthhhh, 0, 0));
-        topicContentList.add(new TopicContent("10.24.53", "messi", "这是一个没有话题的地方", R.drawable.qq, R.drawable.defaulthhhh, 0, 0));
+
+        labelTwoList=new ArrayList<>();
+
+        labelTwoList.add(new LabelTwo(1,"标签1","2018,2,20","10"));
+        labelTwoList.add(new LabelTwo(2,"标签2","2018,2,20","10"));
+        labelTwoList.add(new LabelTwo(3,"标签3","2018,2,20","10"));
+        labelTwoList.add(new LabelTwo(4,"标签4","2018,2,20","10"));
+        labelTwoList.add(new LabelTwo(5,"标签5","2018,2,20","10"));
+
+
+        labelTwoListLike=labelTwoList;
     }
     public void initFunctionBn(){
         homeFunctionList=new ArrayList<>();
@@ -283,33 +303,24 @@ private MyImageButton home_send_bn;
 public void initbanner(){
     // 设置数据
     bannerList=new ArrayList<>();
-    bannerList.add(R.drawable.banner_test);
-    bannerList.add(R.drawable.banner_test);
-    bannerList.add(R.drawable.banner_test);
-    bannerList.add(R.drawable.banner_test);
-    bannerList.add(R.drawable.banner_test);
-    //设置banner样式
-  //  maser_banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
-    //设置图片加载器
-    maser_banner.setImageLoader(new GlideImageLoader());
-    //设置banner动画效果
-    //设置标题集合（当banner样式有显示title时）
-  //  maser_banner.setBannerTitles(titles);
-    //设置自动轮播，默认为true
-    maser_banner.isAutoPlay(true);
+    bannerList.add(R.drawable.basa);
+    bannerList.add(R.drawable.basa);
+    bannerList.add(R.drawable.basa);
+    bannerList.add(R.drawable.basa);
+
+    banner_vp.setImageLoader(new GlideImageLoader());
+    banner_vp.isAutoPlay(true);
     //设置轮播时间
-   maser_banner.setDelayTime(2000);
+    banner_vp.setDelayTime(2000);
     //设置指示器位置（当banner模式中有指示器时）
-    maser_banner.setIndicatorGravity(BannerConfig.CENTER);
+    banner_vp.setIndicatorGravity(BannerConfig.CENTER);
     //banner设置方法全部调用完毕时最后调用
     //设置图片加载器
     //设置图片集合
-    maser_banner.setImages(bannerList);
+    banner_vp.setImages(bannerList);
     //banner设置方法全部调用完毕时最后调用
-    maser_banner.start();
-
+    banner_vp.start();
 }
-
     @Override
     public void onResume() {
 
@@ -322,6 +333,7 @@ public void initbanner(){
         super.onPause();
     }
 
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -330,13 +342,13 @@ public void initbanner(){
     @Override
     public void onStart() {
         super.onStart();
-        maser_banner.startAutoPlay();
+        banner_vp.startAutoPlay();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        maser_banner.stopAutoPlay();
+        banner_vp.stopAutoPlay();
     }
 
 }

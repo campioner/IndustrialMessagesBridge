@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MoreGroupActivity">
+<com.example.administrator.industrialmessagesbridge.myView.SimpleToolbar
+    android:id="@+id/simple_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:minHeight="?attr/actionBarSize"
+    android:background="@color/baise"
+    android:fitsSystemWindows="true"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp">
+    <ImageButton
+        android:id="@+id/more_group_bar_back"
+        android:scaleType="centerInside"
+        android:background="#00000000"
+        android:src="@drawable/arrow_right"
+        android:layout_width="25dp"
+        android:layout_height="25dp" />
+    <TextView
+        android:textSize="18sp"
+        android:text="e汇"
+        android:textColor="@color/blackaa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</com.example.administrator.industrialmessagesbridge.myView.SimpleToolbar>
+    <net.lucode.hackware.magicindicator.MagicIndicator
+        android:background="@color/baise"
+        android:id="@+id/more_group_magic_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/more_group_magic_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+</LinearLayout>

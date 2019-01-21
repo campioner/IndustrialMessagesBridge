@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.administrator.industrialmessagesbridge.myView.StickyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/official_yihui_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.groupFragment.OfficialGroupFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:background="@color/baise"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/official_yihui_image"
+            android:src="@drawable/defaulthhhh"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/official_yihui_name"
+                android:text="e汇官方论坛"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/official_yihui_level"
+                    android:textSize="12sp"
+                    android:textColor="@color/blackaa"
+                    android:text="LV1 横扫千军"
+                    android:background="@drawable/levet_bn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp" />
+                <Button
+                    android:id="@+id/official_yihui_qiandao"
+                    android:textColor="@color/baise"
+                    android:text="签到"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/qiandao_bn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+<net.lucode.hackware.magicindicator.MagicIndicator
+    android:id="@+id/official_yihui_daohang"
+    android:tag="sticky"
+    android:background="@color/baise"
+    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"></net.lucode.hackware.magicindicator.MagicIndicator>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></View>
+        <TextView
+            android:padding="5dp"
+            android:id="@+id/official_yihui_sort"
+            android:textSize="15sp"
+            android:text="回复时间排序"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/arrow_left"
+            android:layout_width="18dp"
+            android:layout_height="18dp" />
+    </LinearLayout>
+    <com.example.administrator.industrialmessagesbridge.myView.InsideViewPager
+        android:id="@+id/official_yihui_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.example.administrator.industrialmessagesbridge.myView.InsideViewPager>
+</LinearLayout>
+        <ImageButton
+        android:id="@+id/official_yihui_sent_topic"
+        android:scaleType="centerInside"
+        android:src="@drawable/topic_send"
+        android:background="#00000000"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
+    </RelativeLayout>
+
+</com.example.administrator.industrialmessagesbridge.myView.StickyScrollView>

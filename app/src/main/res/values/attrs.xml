@@ -14,4 +14,9 @@
         <attr name="isblack" format="boolean"></attr>
     </declare-styleable>
     <attr name="fontPath" format="string"/>
+
+    <declare-styleable name="StickyScrollView">
+        <attr name="stuckShadowHeight" format="dimension" />
+        <attr name="stuckShadowDrawable" format="reference" />
+    </declare-styleable>
 </resources>

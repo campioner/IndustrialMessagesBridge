@@ -20,4 +20,12 @@
     <color name="flatebutton">#FF2F91E7</color>
    <color name="lianjiebackground">#FFF8F8F8</color>
     <color name="lianjiebn">#FFFDFDFD</color>
+    <color name="douyucheng">#FFE4674A</color>
+    <color name="defaultcolor">#FFEEEEEE</color>
+    <color name="topiccolorone">#FFD1F7FE</color>
+    <color name="topiccolortow">#FFFED0D8</color>
+    <color name="topiccolorthree">#FFFEF0B2</color>
+    <color name="topiccolorfour">#FFCDE3FD</color>
+    <color name="tiezilevel">#FFFFEFE8</color>
+    <color name="qiandaocolor">#FFFF5E25</color>
 </resources>

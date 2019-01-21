@@ -52,7 +52,6 @@ EditText login_phone_number;//验证码
         }
         ButterKnife.bind(this);
 
-
         login_password_ll.setVisibility(View.GONE);
         login_method_tv.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -33,6 +33,7 @@ public class MyScrollView extends ScrollView {
         //    Log.i("msg1",  oldt+"oldt");
             onScrollListener.onScroll(t);
         }
+
     }
 
     /**

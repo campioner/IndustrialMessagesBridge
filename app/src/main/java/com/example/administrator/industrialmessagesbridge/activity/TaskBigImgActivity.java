@@ -55,10 +55,23 @@ List<View>viewList=new ArrayList<>();
             photoView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent motionEvent) {
-                    Log.i("msg1",motionEvent.getAction()+"");
+                    switch (motionEvent.getAction()){
+                        case MotionEvent.ACTION_DOWN:
+                            isMove=false;
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            if (!isMove){
+                                finish();
+                            }
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+                            isMove=true;
+                            break;
+                    }
                     return false;
                 }
             });
+
             viewList.add(photoView);
         }
         photo_view_pager.setAdapter(new PagerAdapter() {

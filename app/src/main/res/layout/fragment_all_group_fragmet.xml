@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="match_parent"
+    tools:context=".fragment.groupFragment.AllGroupFragmet">
+    <View
+        android:id="@+id/wight_view"
+        android:background="@color/baise"
+        android:layout_width="20dp"
+        android:layout_marginLeft="80dp"
+        android:layout_height="match_parent">
+    </View>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/all_group_show_yihui_rv"
+        android:background="@color/baise"
+        android:layout_weight="5"
+        android:layout_toRightOf="@+id/wight_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/all_group_lable_one_rv"
+        android:layout_width="80dp"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:background="@color/defaultcolor"
+        android:id="@+id/all_group_lable_two_rv"
+        android:layout_width="80dp"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="80dp"
+        android:id="@+id/all_group_rv"
+        android:background="@color/baise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <ImageButton
+        android:layout_centerVertical="true"
+        android:id="@+id/show_label2_bn"
+        android:scaleType="centerCrop"
+        android:src="@drawable/show_label_bn"
+        android:background="#00000000"
+        android:layout_width="15dp"
+        android:layout_height="60dp" />
+        <ImageButton
+            android:clickable="false"
+            android:id="@+id/all_group_arrow_left"
+            android:layout_centerVertical="true"
+            android:src="@drawable/arrow_left_black"
+            android:scaleType="centerInside"
+            android:background="#00000000"
+            android:layout_width="12dp"
+            android:layout_height="15dp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

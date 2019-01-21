@@ -5,7 +5,10 @@ package com.example.administrator.industrialmessagesbridge;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
@@ -15,9 +18,13 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -57,6 +64,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import razerdp.basepopup.QuickPopupBuilder;
@@ -99,7 +107,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     LinearLayout check_need_ll;
     LinearLayout one_ll;
     LinearLayout two_ll;
+    @BindView(R.id.tv_researchhh)
+    TextView tv_researchhh;
     private ImageButton popuib;
+
     QuickPopup quickPopup;
     Handler handler=new Handler(){
         @Override
@@ -143,14 +154,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
          ButterKnife.bind(this);
          setSupportActionBar(simple_toolbar);
          getSupportActionBar().setTitle("");
-
+         //搜索框内容设置
+        initResearch();
         //初始化底部菜单数据
         initData();
         //初始化侧滑抽屉
-       /*  AnimatorSet set=new AnimatorSet();
-         ObjectAnimator o1=ObjectAnimator.ofFloat(send_bn,"rotation",0,-45F);
-         set.play(o1);
-         set.start();*/
          initChouti();
          //初始化fragment
          simple_toolbar.setSetSearchBar(new SimpleToolbar.SetSearchBar() {
@@ -177,7 +185,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         fragmentTransaction.replace(R.id.mian_ll,homeFragment);
         fragmentTransaction.commit();
     }
-
+public void initResearch(){
+    Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.drawable.search);
+    int width = bitmap.getWidth();
+    int height = bitmap.getHeight();
+    // 计算缩放比例
+    float scaleWidth = ((float)DeviceUtil.dp2px(this,17)) /width;
+    float scaleHeight = ((float) DeviceUtil.dp2px(this,17)) / height;
+    // 取得想要缩放的matrix参数
+    Matrix matrix = new Matrix();
+    matrix.postScale(scaleWidth, scaleHeight);
+    bitmap=Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+    //根据bitmap对象创建imageSpan对象
+    ImageSpan imageSpan=new ImageSpan(this, bitmap);
+    SpannableString spannableString=new SpannableString("icon搜索");
+    spannableString.setSpan(imageSpan, 0, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+    tv_researchhh.setText(spannableString);
+}
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -313,7 +337,8 @@ public void reset(){
                 home_bn.setImageResource(bottomIcon.get(0));
                 home_tv.setTextColor(Color.parseColor("#FF5267D9"));
                 simple_toolbar.setMainTitle("");
-                simple_toolbar.showSerchBar();
+                tv_researchhh.setVisibility(View.VISIBLE);
+               // simple_toolbar.showSerchBar();
                 ronate();
                 break;
             case 1:
@@ -323,7 +348,8 @@ public void reset(){
                 mine_tv.setTextColor(Color.parseColor("#FF5267D9"));
                 fragmentTransaction.replace(R.id.mian_ll,messageFragment);
                 simple_toolbar.setMainTitle("通讯录");
-                simple_toolbar.hideSerchBar();
+                tv_researchhh.setVisibility(View.GONE);
+                //simple_toolbar.hideSerchBar();
                 ronate();
                 break;
             case  2:
@@ -336,7 +362,7 @@ public void reset(){
                 topic_bn.setImageResource(bottomIcon.get(3));
                 topic_tv.setTextColor(Color.parseColor("#FF5267D9"));
                 simple_toolbar.setMainTitle("讨论");
-                simple_toolbar.hideSerchBar();
+                tv_researchhh.setVisibility(View.GONE);
                 fragmentTransaction.replace(R.id.mian_ll,topicFragment);
                 ronate();
                 break;
@@ -346,7 +372,8 @@ public void reset(){
                 setting_bn.setImageResource(bottomIcon.get(4));
                 seting_tv.setTextColor(Color.parseColor("#FF5267D9"));
                 fragmentTransaction.replace(R.id.mian_ll,settingFragment);
-                simple_toolbar.hideSerchBar();
+               // simple_toolbar.hideSerchBar();
+                tv_researchhh.setVisibility(View.GONE);
                 simple_toolbar.setMainTitle("消息");
                 ronate();
                 break;

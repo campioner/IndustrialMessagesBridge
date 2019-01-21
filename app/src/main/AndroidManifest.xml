@@ -69,8 +69,10 @@
         <activity
             android:name=".activity.SendPostsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.SendArticleActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.SendArticleActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <provider
             android:name=".utils.DemoFileProvider"
             android:authorities="com.example.administrator.industrialmessagesbridge.utils.DemoFileProvider"
@@ -80,6 +82,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <activity android:name=".activity.MoreGroupActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
