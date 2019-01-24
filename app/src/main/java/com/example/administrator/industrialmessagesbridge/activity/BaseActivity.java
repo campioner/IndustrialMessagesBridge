@@ -1,7 +1,9 @@
 package com.example.administrator.industrialmessagesbridge.activity;
 
 import android.content.Context;
+import android.content.IntentFilter;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
@@ -15,12 +17,23 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.android.tu.loadingdialog.LoadingDailog;
+import com.example.administrator.industrialmessagesbridge.R;
+import com.example.administrator.industrialmessagesbridge.utils.NetworkChangReceiver;
+import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
+import razerdp.basepopup.QuickPopupBuilder;
+import razerdp.basepopup.QuickPopupConfig;
+import razerdp.widget.QuickPopup;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class BaseActivity extends AppCompatActivity {
     private  InputMethodManager imm;
     private  LoadingDailog dialog;
+    private IntentFilter intentFilter;
+    private NetworkChangReceiver networkChangReceiver;
+
+    private QuickPopup quickPopup;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,13 +54,18 @@ public class BaseActivity extends AppCompatActivity {
             ViewCompat.setFitsSystemWindows(mChildView, false);
             ViewCompat.requestApplyInsets(mChildView);
         }
-
+        QuickPopupConfig quickPopupConfig=new QuickPopupConfig();
+        quickPopup= QuickPopupBuilder.with(this).contentView(R.layout.progressbar).config(quickPopupConfig).build();
         LoadingDailog.Builder loadBuilder=new LoadingDailog.Builder(this)
                 .setMessage("加载中...")
                 .setCancelable(true)
                 .setCancelOutside(false);
         dialog=loadBuilder.create();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        intentFilter=new IntentFilter();
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        networkChangReceiver=new NetworkChangReceiver();
+        registerReceiver(networkChangReceiver,intentFilter);
     }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -88,12 +106,25 @@ public class BaseActivity extends AppCompatActivity {
         return false;
     }
     public void showProgressLoading(){
-        dialog.show();
+        quickPopup.showPopupWindow();
     }
     public void hideProcessLoading(){
-        dialog.dismiss();
+        quickPopup.dismiss();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(networkChangReceiver);
+    }
+    public int getStatusBarHeight(Context context) {
+        int result = 0;
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));

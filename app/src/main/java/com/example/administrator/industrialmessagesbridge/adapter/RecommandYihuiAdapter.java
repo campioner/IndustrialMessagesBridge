@@ -82,8 +82,6 @@ public class RecommandYihuiAdapter extends RecyclerView.Adapter {
        if (holder instanceof  RecommandYihuiViewHolder2){
            RecommandYihuiViewHolder2 recommandYihuiViewHolder2=(RecommandYihuiViewHolder2)holder;
                recommandYihuiViewHolder2.my_yihui_name1.setText(eHuiList.get(position*2).getTopicName());
-
-           RelativeLayout.LayoutParams layoutParams=(RelativeLayout.LayoutParams )recommandYihuiViewHolder2.my_yihui_ll1.getLayoutParams();
                recommandYihuiViewHolder2.my_yihui_ll1.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View view) {

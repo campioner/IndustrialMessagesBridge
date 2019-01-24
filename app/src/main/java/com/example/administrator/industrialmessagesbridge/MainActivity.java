@@ -37,14 +37,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.administrator.industrialmessagesbridge.activity.AppointmentMasterActivity;
 import com.example.administrator.industrialmessagesbridge.activity.BaseActivity;
+import com.example.administrator.industrialmessagesbridge.activity.BeAppointMasterActivity;
 import com.example.administrator.industrialmessagesbridge.activity.BecomeMaster;
 import com.example.administrator.industrialmessagesbridge.activity.ConfirmName;
+import com.example.administrator.industrialmessagesbridge.activity.DocumentInfo;
 import com.example.administrator.industrialmessagesbridge.activity.MasterIntroduce;
 
+import com.example.administrator.industrialmessagesbridge.activity.MyAttention;
 import com.example.administrator.industrialmessagesbridge.activity.SendArticleActivity;
 import com.example.administrator.industrialmessagesbridge.activity.SendNeedActivity;
+import com.example.administrator.industrialmessagesbridge.activity.UserDescribe;
 import com.example.administrator.industrialmessagesbridge.activity.histroy.HistroyInPosts;
+import com.example.administrator.industrialmessagesbridge.adapter.DocumentShowAdapter;
+import com.example.administrator.industrialmessagesbridge.fragment.DocumentShow;
 import com.example.administrator.industrialmessagesbridge.fragment.HomeFragment;
 import com.example.administrator.industrialmessagesbridge.fragment.MessageFragment;
 import com.example.administrator.industrialmessagesbridge.fragment.SettingFragment;
@@ -263,24 +270,24 @@ public void reset(){
                 .withDisplayBelowStatusBar(false)
                 .withTranslucentStatusBar(false)
                 .addDrawerItems(
-
                         new PrimaryDrawerItem().withIcon(R.drawable.person_info).withName("个人信息"),
                         new PrimaryDrawerItem().withIcon(R.drawable.person_comfirm).withName("实名认证"),
                         new PrimaryDrawerItem().withIcon(R.drawable.company_comfirm).withName("企业认证"),
-                        new PrimaryDrawerItem().withIcon(R.drawable.store_master).withName("专家收藏"),
-                        new PrimaryDrawerItem().withIcon(R.drawable.document_store).withName("文档收藏"),
+                        new PrimaryDrawerItem().withIcon(R.drawable.store_master).withName("我的关注"),
+                        new PrimaryDrawerItem().withIcon(R.drawable.document_store).withName("文档管理"),
                         new PrimaryDrawerItem().withIcon(R.drawable.send_tiezi_history).withName("发帖记录"),
                         new PrimaryDrawerItem().withIcon(R.drawable.drawer_become_master).withName("成为专家"),
                         new PrimaryDrawerItem().withIcon(R.drawable.appointment).withName("预约记录"),
-                        new PrimaryDrawerItem().withIcon(R.drawable.send_teizi).withName("文档记录"),
+                        new PrimaryDrawerItem().withIcon(R.drawable.beiyuyue).withName("被预约记录"),
                         new PrimaryDrawerItem().withIcon(R.drawable.tuiguang).withName("推广")
-
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         switch (position){
                             case 1://个人信息
+                                Intent intent=new Intent(MainActivity.this, UserDescribe.class);
+                                startActivity(intent);
                                 break;
                             case 2://实名认证
                                 Intent intent2=new Intent(MainActivity.this, ConfirmName.class);
@@ -288,9 +295,13 @@ public void reset(){
                                 break;
                             case 3://企业认证
                                 break;
-                            case 4://专家收藏
+                            case 4://我的关注
+                                Intent intent4=new Intent(MainActivity.this, MyAttention.class);
+                                startActivity(intent4);
                                 break;
                             case 5://文档收藏
+                                Intent intent5=new Intent(MainActivity.this, DocumentInfo.class);
+                                startActivity(intent5);
                                 break;
                             case 6://发帖记录
                                 Intent intent6=new Intent(MainActivity.this, HistroyInPosts.class);
@@ -301,8 +312,12 @@ public void reset(){
                                 startActivity(intent7);
                                 break;
                             case 8://预约记录
+                                Intent intent8=new Intent(MainActivity.this, AppointmentMasterActivity.class);
+                                startActivity(intent8);
                                 break;
-                            case 9://文档记录
+                            case 9://被预约记录
+                                Intent intent9=new Intent(MainActivity.this, BeAppointMasterActivity.class);
+                                startActivity(intent9);
                                 break;
                             case 10://推广
                                 break;

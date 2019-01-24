@@ -10,10 +10,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.industrialmessagesbridge.R;
@@ -34,7 +36,9 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorT
 import java.util.ArrayList;
 import java.util.List;
 
+import razerdp.basepopup.BasePopupWindow;
 import razerdp.basepopup.QuickPopupBuilder;
+import razerdp.basepopup.QuickPopupConfig;
 import razerdp.widget.QuickPopup;
 
 /**
@@ -46,12 +50,13 @@ public class OfficialGroupFragment extends Fragment implements View.OnClickListe
     private String []mtitle={"最新帖子","精华内容"};
     private List<Fragment>fragmentList;
     private TextView  official_yihui_sort;
-    QuickPopup quickPopup;
     private View popuView;
     private TextView sort_huifu,sort_fabu;
     private ImageButton official_yihui_sent_topic;
     private StickyScrollView official_yihui_scrollview;
     int sent_topicX=0,sent_topicY=0;
+    private BasePopupWindow basePopupWindow;
+    private ImageView select_sort_iv;
     public OfficialGroupFragment() {
         // Required empty public constructor
     }
@@ -66,15 +71,25 @@ public class OfficialGroupFragment extends Fragment implements View.OnClickListe
         official_yihui_vp=(InsideViewPager)v.findViewById(R.id.official_yihui_vp);
         official_yihui_sort=(TextView)v.findViewById(R.id.official_yihui_sort);
         official_yihui_sort.setOnClickListener(this);
-        quickPopup = QuickPopupBuilder.with(getContext()).contentView(R.layout.popu_sort).width(DeviceUtil.dp2px(getContext(),140)).height(DeviceUtil.dp2px(getContext(),120)).build();
-        popuView=quickPopup.getContentView();
+        select_sort_iv=(ImageView)v.findViewById(R.id.select_sort_iv);
+         basePopupWindow=new BasePopupWindow(getContext()) {
+            @Override
+            public View onCreateContentView() {
+                return createPopupById(R.layout.popu_sort);
+            }
+        };
+        basePopupWindow.setWidth(DeviceUtil.dp2px(getContext(),140));
+        basePopupWindow.setHeight(DeviceUtil.dp2px(getContext(),120));
+        basePopupWindow.setAlignBackgroundGravity(Gravity.BOTTOM);
+        basePopupWindow.setBackground(null);
+        basePopupWindow.setClipChildren(true);
+        popuView=basePopupWindow.getContentView();
         sort_huifu=(TextView)popuView.findViewById(R.id.sort_huifu);
         sort_fabu=(TextView)popuView.findViewById(R.id.sort_fabu);
         official_yihui_scrollview=(StickyScrollView)v.findViewById(R.id.official_yihui_scrollview);
         sort_huifu.setOnClickListener(this);
         sent_topicX=DeviceUtil.deviceWidth(getContext())-DeviceUtil.dp2px(getContext(),70);
         sent_topicY=(DeviceUtil.deviceHeight(getContext())-DeviceUtil.dp2px(getContext(),100))*3/4;
-
         official_yihui_sent_topic=(ImageButton) v.findViewById(R.id.official_yihui_sent_topic);
         official_yihui_sent_topic.setTranslationX(sent_topicX);
         official_yihui_sent_topic.setTranslationY(sent_topicY);
@@ -83,7 +98,7 @@ public class OfficialGroupFragment extends Fragment implements View.OnClickListe
         sort_huifu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                quickPopup.dismiss();
+                basePopupWindow.dismiss();
                 official_yihui_sort.setText("回复时间排序");
             }
         });
@@ -96,7 +111,7 @@ public class OfficialGroupFragment extends Fragment implements View.OnClickListe
         sort_fabu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                quickPopup.dismiss();
+                basePopupWindow.dismiss();
                 official_yihui_sort.setText("发布时间排序");
             }
         });
@@ -115,7 +130,7 @@ public class OfficialGroupFragment extends Fragment implements View.OnClickListe
                     sort_fabu.setTextColor(getResources().getColor(R.color.douyucheng));
                     sort_huifu.setTextColor(getResources().getColor(R.color.blackaa));
                 }
-                quickPopup.showPopupWindow(view);
+                basePopupWindow.showPopupWindow(view);
                 break;
             case R.id.official_yihui_sent_topic://发帖
                 break;

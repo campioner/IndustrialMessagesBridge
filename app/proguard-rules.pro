@@ -26,3 +26,7 @@
 #okio
 -dontwarn okio.**
 -keep class okio.**{*;}
+
+-keep class com.mob.**{*;}
+-keep class cn.smssdk.**{*;}
+-dontwarn com.mob.**

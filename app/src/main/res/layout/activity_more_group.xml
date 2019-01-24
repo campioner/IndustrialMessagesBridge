@@ -10,7 +10,6 @@
     android:id="@+id/simple_toolbar"
     android:layout_width="match_parent"
     android:layout_height="55dp"
-    android:minHeight="?attr/actionBarSize"
     android:background="@color/baise"
     android:fitsSystemWindows="true"
     app:contentInsetLeft="0dp"

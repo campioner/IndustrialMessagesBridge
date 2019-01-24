@@ -20,6 +20,7 @@ import com.lzy.okgo.cookie.CookieJarImpl;
 import com.lzy.okgo.cookie.store.SPCookieStore;
 import com.lzy.okgo.https.HttpsUtils;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
+import com.mob.MobSDK;
 
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -40,6 +41,7 @@ public class MyApplication extends Application {
         initGreenDao();
         pref= PreferenceManager.getDefaultSharedPreferences(this);
         editor=pref.edit();
+
         this.context=getApplicationContext();
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor("OkGo");
 //log打印级别，决定了log显示的详细程度
@@ -66,6 +68,7 @@ public class MyApplication extends Application {
                 .setCacheMode(CacheMode.NO_CACHE)               //全局统一缓存模式，默认不使用缓存，可以不传
                 .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE)   //全局统一缓存时间，默认永不过期，可以不传
                 .setRetryCount(3) ;                             //全局统一超时重连次数，默认为三次，那么最差的情况会请求4次(一次原始请求，三次重连请求)，不需要可以设置为0
+        MobSDK.init(this);
     }
     private void initGreenDao() {
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder().setDefaultFontPath("fonts/Roboto-RobotoRegular.ttf").setFontAttrId(R.attr.fontPath).build());

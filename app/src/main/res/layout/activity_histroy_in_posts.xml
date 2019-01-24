@@ -12,7 +12,6 @@
         android:layout_height="40dp"
         android:background="@color/barcolor"
         android:fitsSystemWindows="true"
-        android:minHeight="?attr/actionBarSize"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp">
         <ImageView

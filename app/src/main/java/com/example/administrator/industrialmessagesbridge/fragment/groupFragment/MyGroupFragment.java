@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -47,7 +48,12 @@ private List<EHui>eHuiList;
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         my_group_recently_see_rv.setLayoutManager(linearLayoutManager);
-
+        my_group_recently_see_rv.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
         recommandYihuiAdapter2=new RecommandYihuiAdapter(eHuiList);
         recommandYihuiAdapter2.setHorizon(true);
         my_yihui_rv.setLayoutManager(new LinearLayoutManager(getContext()));

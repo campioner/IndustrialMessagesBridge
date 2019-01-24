@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/document_show_ll"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:background="@color/baise"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:src="@drawable/document_check"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/document_name"
+            android:textColor="@color/blackaa"
+            android:textSize="17sp"
+            android:text="最新防盗八法，防火防盗"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/document_time"
+            android:text="2018-10-12-23:24:255:2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/ducument_price"
+        android:textSize="18sp"
+        android:text="50"
+        android:textColor="@color/blackaa"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+    <View
+        android:background="@color/home_divice"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+</LinearLayout>

@@ -57,7 +57,7 @@ private boolean canShowDialog=true;
         dialog.setOnCancelButtonClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+finish();
             }
         });
          dialog.addCancelButton("取消");
@@ -74,6 +74,9 @@ private boolean canShowDialog=true;
             case 1:
                 title="工作经历";
                 mTxtMiddleTitle.setText("工作经历");
+                break;
+            case 2:
+                mTxtMiddleTitle.setText("签名设置");
                 break;
         }
     }

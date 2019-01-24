@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,11 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.administrator.industrialmessagesbridge.R;
 import com.example.administrator.industrialmessagesbridge.adapter.AllGroupLableTwoAdapter;
 import com.example.administrator.industrialmessagesbridge.adapter.GroupShowAdapter;
 import com.example.administrator.industrialmessagesbridge.adapter.adapterModel.AllGroupLabelOneAdapter;
+import com.example.administrator.industrialmessagesbridge.fragment.BaseFragment;
 import com.example.administrator.industrialmessagesbridge.model.AllLable;
 import com.example.administrator.industrialmessagesbridge.model.EHui;
 import com.example.administrator.industrialmessagesbridge.model.Label;
@@ -39,10 +42,13 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import razerdp.basepopup.QuickPopupBuilder;
+import razerdp.widget.QuickPopup;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AllGroupFragmet extends Fragment implements View.OnClickListener{
+public class AllGroupFragmet extends BaseFragment implements View.OnClickListener{
 private ImageButton show_label2_bn,all_group_arrow_left;
 private Boolean isShow=false;
 private RecyclerView all_group_lable_two_rv,all_group_lable_one_rv;
@@ -56,10 +62,11 @@ private RecyclerView all_group_show_yihui_rv;
     int laterOne=0,laterTwo=0;
     List<AllLable.LabelTwoAll> labelTwoAllListl;
     private AllGroupLableTwoAdapter allGroupLableTwoAdapter;
+    private Handler handler=new Handler();
     public AllGroupFragmet() {
         // Required empty public constructor
     }
-
+    private QuickPopup quickPopup;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,10 +82,12 @@ private RecyclerView all_group_show_yihui_rv;
         all_group_rv=(RelativeLayout)v.findViewById(R.id.all_group_rv);
         all_group_lable_two_rv.setVisibility(View.INVISIBLE);
         allLableList=new ArrayList<>();
+        quickPopup= QuickPopupBuilder.with(getContext()).contentView(R.layout.progressbar).build();
         getAllLable();
         return v;
     }
     public void getAllLable(){
+        showProgressLoading();
         OkGo.<String>get(Net.findAllSystemLabel)
                 .tag(this).execute(new StringCallback() {
             @Override
@@ -107,8 +116,7 @@ private RecyclerView all_group_show_yihui_rv;
                         allLableList.add(allLable);
                     }
                     initLabelOneRecycleView();
-                    int r=1;
-                    int q=r;
+                    hideProcessLoading();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -118,6 +126,13 @@ private RecyclerView all_group_show_yihui_rv;
             @Override
             public void onError(Response<String> response) {
                 super.onError(response);
+                hideProcessLoading();
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(),"获取失败，请检查网络",Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
@@ -197,5 +212,11 @@ public void initLableTwoRecycleView(final List<AllLable.LabelTwoAll> labelListtw
         eHuiList.add(new EHui(2,0, "标签3", "话题3", "11", "11", "2019,1,1", "介绍1", "1万", "100万", 0, new Integer(R.drawable.defaulthhhh).toString()));
         eHuiList.add(new EHui(3,1, "标签4", "话题4", "11", "11", "2019,1,1", "介绍1", "1万", "100万", 1, new Integer(R.drawable.defaulthhhh).toString()));
         eHuiList.add(new EHui(4,2, "标签5", "话题5", "11", "11", "2019,1,1", "介绍1", "1万", "100万", 0, new Integer(R.drawable.defaulthhhh).toString()));
+    }
+    public void showProgressLoading(){
+        quickPopup.showPopupWindow();
+    }
+    public void hideProcessLoading(){
+        quickPopup.dismiss();
     }
 }

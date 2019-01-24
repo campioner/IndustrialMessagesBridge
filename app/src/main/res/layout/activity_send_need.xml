@@ -377,12 +377,35 @@
         android:layout_width="match_parent"
         android:layout_height="250dp" />
 </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"></View>
 <Button
     android:id="@+id/submit_bn"
     android:text="提交"
-    android:background="@color/bnlan"
+    android:background="@drawable/order_bn"
     android:layout_gravity="center"
     android:layout_width="180dp"
-    android:layout_height="50dp" />
+    android:layout_height="45dp" />
+        <View
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"></View>
+        <Button
+            android:id="@+id/set_need_request_bn"
+            android:background="@drawable/order_bn"
+            android:text="设置问卷"
+            android:layout_width="180dp"
+            android:layout_height="45dp" />
+        <View
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"></View>
+    </LinearLayout>
 </LinearLayout>
 </ScrollView>

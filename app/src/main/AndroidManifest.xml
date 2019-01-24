@@ -83,8 +83,36 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".activity.MoreGroupActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <receiver android:name=".utils.NetworkChangReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".activity.MoreGroupActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.DocumentInfo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.MyAttention"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.UserDescribe"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AppointmentMasterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AppointMasterDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.BeAppointMasterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.SetRequestNeedActivity"></activity>
     </application>
 
 </manifest>

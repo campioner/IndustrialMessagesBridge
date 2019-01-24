@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'//GreenDao添加
+apply plugin: 'com.mob.sdk'
 android {
     greendao {
         schemaVersion 1 //数据库版本号
@@ -8,6 +9,12 @@ android {
         targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
         generateTests false //设置为true以自动生成单元测试。
         targetGenDirTests 'src/main/java' //应存储生成的单元测试的基本目录。默认为 src / androidTest / java。
+    }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        // 防止在发布的时候出现因MissingTranslation导致Build Failed!
+        disable 'MissingTranslation'
     }
     compileSdkVersion 25
     defaultConfig {
@@ -29,6 +36,13 @@ android {
     aaptOptions.cruncherEnabled = false
     aaptOptions.useNewCruncher = false
 }
+MobSDK {
+    appKey "29dc55c703c46"
+    appSecret "d421004e54202d0108f8120e5c45cb76"
+
+    SMSSDK {}
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:25.1.0'
@@ -79,7 +93,7 @@ dependencies {
     //字体
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
     //popWindow
-    implementation 'com.github.razerdp:BasePopup:2.1.2'
+    implementation 'com.github.razerdp:BasePopup:2.1.5'
     //下拉刷新
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-18'
@@ -100,4 +114,7 @@ dependencies {
     compile 'jp.wasabeef:richeditor-android:1.2.2'
     compile 'com.getbase:floatingactionbutton:1.10.1'
     compile 'com.lzy.net:okgo:3.0.4'
+    compile 'com.pnikosis:materialish-progress:1.7'
+//日历
+    compile 'com.borax12.materialdaterangepicker:library:1.9'
 }

@@ -75,6 +75,8 @@ String []calendarTitle={"开标时间","完成时间","发布截止时间"};
  Button submit_bn;
 @BindView(R.id.simple_toolbar)
     SimpleToolbar simple_toolbar;
+@BindView(R.id.set_need_request_bn)
+Button set_need_request_bn;
     private ArrayList<LableOneModel> options1Items = new ArrayList<>();
     private ArrayList<ArrayList<LableTwo>> options2Items = new ArrayList<>();
     private List<LabelOne> labelOneList=new ArrayList<>();
@@ -101,6 +103,7 @@ String []calendarTitle={"开标时间","完成时间","发布截止时间"};
         end_bussiness_time_ll.setOnClickListener(this);
         end_need_time_ll.setOnClickListener(this);
         submit_bn.setOnClickListener(this);
+        set_need_request_bn.setOnClickListener(this);
         //设置日期
         Calendar startDate = Calendar.getInstance();
         Date todayDate = Calendar.getInstance().getTime();
@@ -218,6 +221,9 @@ public void initWheelView(){
                     break;
             case R.id.select_lable_ll:
                 optionsPickerView.show();
+                break;
+            case R.id.set_need_request_bn://设置调查问卷
+
                 break;
         }
     }

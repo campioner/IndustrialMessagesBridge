@@ -46,9 +46,12 @@ import com.example.administrator.industrialmessagesbridge.adapter.HotLabelAdapte
 import com.example.administrator.industrialmessagesbridge.adapter.RecommadnItemDecroration;
 import com.example.administrator.industrialmessagesbridge.adapter.RecommandAdapter;
 import com.example.administrator.industrialmessagesbridge.adapter.adapterModel.HomeFunction;
+import com.example.administrator.industrialmessagesbridge.adapter.adapterModel.HomeRecommandAdapter;
 import com.example.administrator.industrialmessagesbridge.model.DocumentModel;
 import com.example.administrator.industrialmessagesbridge.model.LabelTwo;
 import com.example.administrator.industrialmessagesbridge.model.TopicContent;
+import com.example.administrator.industrialmessagesbridge.model.UserInfo;
+import com.example.administrator.industrialmessagesbridge.model.UserTop;
 import com.example.administrator.industrialmessagesbridge.myView.FullyLinearLayoutManager;
 import com.example.administrator.industrialmessagesbridge.myView.InsideViewPager;
 import com.example.administrator.industrialmessagesbridge.myView.MyImageButton;
@@ -107,7 +110,10 @@ private List<LabelTwo>labelTwoList;
    private List<Fragment>bannerFragmentList;
    private Handler bannerHandler=new Handler();
    private int page=0;
-   private int time=0;
+
+   private List<UserTop>knownUserList;
+   private RecyclerView recommand_konwn_user_rv;
+   private HomeRecommandAdapter homeRecommandKnowUserAdapter;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -121,13 +127,15 @@ private List<LabelTwo>labelTwoList;
         home_scroll_view=(StickyScrollView)view.findViewById(R.id.home_scroll_view);
         home_vp=(InsideViewPager)view.findViewById(R.id.home_vp1);
         banner_vp=(com.example.administrator.industrialmessagesbridge.myView.Banner1)view.findViewById(R.id.banner_vp);
-
+        recommand_konwn_user_rv=(RecyclerView)view.findViewById(R.id.recommand_konwn_user_rv);
         move_rl=(RelativeLayout) view.findViewById(R.id.move_rl);
         hot_label_rv=(RecyclerView)view.findViewById(R.id.hot_label_rv);
         //初始化轮播图
         initbanner();
         //下方功能键
         initFunctionBn();
+        //推荐热门专家
+        initHotMaster();
         //下方推荐
         initRecommand();
         //初始化热点标签
@@ -135,6 +143,19 @@ private List<LabelTwo>labelTwoList;
         //初始化导航
         initMagicIndicator();
         return view;
+    }
+    public void initHotMaster(){
+        //推荐名人
+        LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(getContext());
+        linearLayoutManager3.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recommand_konwn_user_rv.setLayoutManager(linearLayoutManager3);
+        knownUserList=new ArrayList<>();
+        knownUserList.add(new UserTop(1,"用户","",1));
+        knownUserList.add(new UserTop(1,"用户","",1));
+        knownUserList.add(new UserTop(1,"用户","",1));
+        knownUserList.add(new UserTop(1,"用户","",1));
+        homeRecommandKnowUserAdapter=new HomeRecommandAdapter(knownUserList);
+        recommand_konwn_user_rv.setAdapter(homeRecommandKnowUserAdapter);
     }
     public void initMagicIndicator(){
         CommonNavigator commonNavigator = new CommonNavigator(getContext());
@@ -264,11 +285,14 @@ private List<LabelTwo>labelTwoList;
     }
     public void initFunctionBn(){
         homeFunctionList=new ArrayList<>();
-        homeFunctionList.add(new HomeFunction(R.drawable.hellofour,"需求"));
-        homeFunctionList.add(new HomeFunction(R.drawable.helloone,"专家"));
-        homeFunctionList.add(new HomeFunction(R.drawable.renwu,"任务"));
-        homeFunctionList.add(new HomeFunction(R.drawable.wendang,"文档"));
-        homeFunctionList.add(new HomeFunction(R.drawable.huati,"话题"));
+        homeFunctionList.add(new HomeFunction(R.drawable.xuqiu_xuqiu,"需求"));
+        homeFunctionList.add(new HomeFunction(R.drawable.zhuanjia,"专家"));
+        homeFunctionList.add(new HomeFunction(R.drawable.renwu_renwu,"任务"));
+        homeFunctionList.add(new HomeFunction(R.drawable.wendang_w,"文档"));
+        homeFunctionList.add(new HomeFunction(R.drawable.huati_h,"话题"));
+        homeFunctionList.add(new HomeFunction(R.drawable.wenzhang_w,"文章"));
+        homeFunctionList.add(new HomeFunction(R.drawable.guanzhu_g,"关注"));
+        homeFunctionList.add(new HomeFunction(R.drawable.tuijian_t,"用户推荐"));
         homeFragmentFunctionAdapter=new HomeFragmentFunctionAdapter(homeFunctionList);
         homeFragment_founction.setLayoutManager(new GridLayoutManager(getContext(),4));
         homeFragment_founction.setAdapter(homeFragmentFunctionAdapter);
